@@ -18,6 +18,10 @@ defmodule PhxlightWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/clock", ClockLive
+    live "/light", LightLive
+    live "/light_topic", LightTopicLive
   end
 
   # Other scopes may use custom stacks.
