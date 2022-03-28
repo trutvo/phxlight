@@ -4,6 +4,7 @@ defmodule Phxlight.Application do
   @moduledoc false
 
   use Application
+  require Logger
 
   defp get_env_as_integer(name, default_value) do
     value = System.get_env(name, "")
@@ -15,11 +16,12 @@ defmodule Phxlight.Application do
 
   defp get_pubsub() do
     redis_host = System.get_env("REDIS_HOST")
-    node_name = System.get_env("NODE_NAME")
+    node_name = System.get_env("NODE_NAME", UUID.uuid1())
     redis_port = get_env_as_integer("REDIS_PORT", 6379)
-    if Blankable.blank?(redis_host) or Blankable.blank?(node_name) do
+    if Blankable.blank?(redis_host) do
       {Phoenix.PubSub, name: Phxlight.PubSub}
     else
+      Logger.info("Activate PubSub.Redis on host #{redis_host}:#{redis_port} for node '#{node_name}'")
       {Phoenix.PubSub,
         adapter: Phoenix.PubSub.Redis,
         name: Phxlight.PubSub,

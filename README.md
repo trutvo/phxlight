@@ -9,6 +9,18 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+### Environment Variables
+
+To enable redis chache set:
+
+    REDIS_HOST=...
+
+Optional parameters are
+
+    REDIS_PORT=... # default 6379
+    NODE_NAME=...
+
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/

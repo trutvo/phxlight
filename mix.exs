@@ -47,7 +47,8 @@ defmodule Phxlight.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:phoenix_pubsub_redis, "~> 3.0.0"},
-      {:blankable, "~> 1.0.0"}
+      {:blankable, "~> 1.0.0"},
+      {:uuid, "~> 1.1"}
     ]
   end
 
