@@ -5,13 +5,37 @@ defmodule Phxlight.Application do
 
   use Application
 
+  defp get_env_as_integer(name, default_value) do
+    value = System.get_env(name, "")
+    case Integer.parse(value) do
+      { num, _ } -> num
+      _ -> default_value
+    end
+  end
+
+  defp get_pubsub() do
+    redis_host = System.get_env("REDIS_HOST")
+    node_name = System.get_env("NODE_NAME")
+    redis_port = get_env_as_integer("REDIS_PORT", 6379)
+    if Blankable.blank?(redis_host) or Blankable.blank?(node_name) do
+      {Phoenix.PubSub, name: Phxlight.PubSub}
+    else
+      {Phoenix.PubSub,
+        adapter: Phoenix.PubSub.Redis,
+        name: Phxlight.PubSub,
+        host: redis_host,
+        port: redis_port,
+        node_name: node_name}
+    end
+  end
+
   @impl true
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
       PhxlightWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Phxlight.PubSub},
+      get_pubsub(),
       # Start the Endpoint (http/https)
       PhxlightWeb.Endpoint
       # Start a worker by calling: Phxlight.Worker.start_link(arg)

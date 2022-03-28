@@ -45,7 +45,9 @@ defmodule Phxlight.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:phoenix_pubsub_redis, "~> 3.0.0"},
+      {:blankable, "~> 1.0.0"}
     ]
   end
 

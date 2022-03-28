@@ -11,7 +11,7 @@ import Config
 # before starting your production server.
 config :phxlight, PhxlightWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {127, 0, 0, 1}, port: System.get_env("PORT") || 4000],
   check_origin: false
 
 # Do not print debug messages in production
