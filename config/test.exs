@@ -7,10 +7,6 @@ config :phxlight, PhxlightWeb.Endpoint,
   secret_key_base: "hiSpxwaDcWowVhuDAJAX46cFHFnYR/EG7mJspggfoYsgwKj+oIcGkot6g7kX0vWu",
   server: false
 
-# In test we don't send emails.
-config :phxlight, Phxlight.Mailer,
-  adapter: Swoosh.Adapters.Test
-
 # Print only warnings and errors during test
 config :logger, level: :warn
 
