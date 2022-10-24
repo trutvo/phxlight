@@ -21,4 +21,5 @@ RUN mix phx.digest
 RUN mix compile
 
 ENV MIX_ENV=prod
+EXPOSE 4000
 CMD [ "bash", "./run-server.sh" ]
