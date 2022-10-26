@@ -16,6 +16,7 @@ RUN mix local.rebar --force
 
 RUN mix deps.get
 RUN mix phx.digest
+RUN mix assets.deploy
 
 # Compile the project.
 RUN mix compile
