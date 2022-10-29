@@ -7,9 +7,15 @@
 # General application configuration
 import Config
 
+root_path = System.get_env("ROOT_PATH", "/")
+
+config :phxlight,
+ root_path: root_path
+
+
 # Configures the endpoint
 config :phxlight, PhxlightWeb.Endpoint,
-  url: [host: "localhost", path: "/"],
+  url: [host: "localhost", path: root_path],
   render_errors: [view: PhxlightWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Phxlight.PubSub,
   live_view: [signing_salt: "8JQ11oHx"]
