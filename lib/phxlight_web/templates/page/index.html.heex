@@ -6,15 +6,9 @@
 <section>
     <h2>Examples</h2>
     <ul>
-      <li>
-        <a href="/light">Light</a>
-      </li>
-        <li>
-        <a href="/light_topic">Light with Topic</a>
-      </li>
-      <li>
-        <a href="/clock">Clock</a>
-      </li>
+      <li><%= link to: Routes.static_path(@conn, "/light") do %>Light<% end %></li>
+      <li><%= link to: Routes.static_path(@conn, "/light_topic") do %>Light with Topic<% end %></li>
+      <li><%= link to: Routes.static_path(@conn, "/clock") do %>Clock<% end %></li>
     </ul>
 </section>
 

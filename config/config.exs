@@ -9,7 +9,7 @@ import Config
 
 # Configures the endpoint
 config :phxlight, PhxlightWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", path: "/"],
   render_errors: [view: PhxlightWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Phxlight.PubSub,
   live_view: [signing_salt: "8JQ11oHx"]
