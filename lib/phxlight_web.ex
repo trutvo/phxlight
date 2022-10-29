@@ -107,4 +107,11 @@ defmodule PhxlightWeb do
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
+
+  def get_path(path) do
+    path = if String.starts_with?(path, "/"), do: path, else: "/" <> path
+    root = Application.fetch_env!(:phxlight, :root_path)
+    root = if String.ends_with?(root, "/"), do: String.slice(root, 0, String.length(root)-1), else: root
+    root <> path
+  end
 end

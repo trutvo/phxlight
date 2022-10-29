@@ -50,6 +50,6 @@ defmodule PhxlightWeb.LightTopicLive do
   defp set_light_status(socket, status) do
     socket
     |> assign(:light_bulb_status, status)
-    |> assign(:image_path, Application.fetch_env!(:phxlight, :root_path) <> "/images/light-#{status}.jpg")
+    |> assign(:image_path, PhxlightWeb.get_path("/images/light-#{status}.jpg"))
   end
 end
