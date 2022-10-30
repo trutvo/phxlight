@@ -7,7 +7,8 @@ defmodule PhxlightWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_phxlight_key",
-    signing_salt: "0vAPl12W"
+    signing_salt: "0vAPl12W",
+    extra: "SameSite=Strict"
   ]
 
   socket PhxlightWeb.get_path("/live"), Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
