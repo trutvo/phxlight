@@ -14,7 +14,7 @@ defmodule PhxlightWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope PhxlightWeb.get_root_path(), PhxlightWeb do
+  scope PhxlightWeb.get_root_path() <> "/", PhxlightWeb do
     pipe_through :browser
 
     live "/", LightTopicLive
