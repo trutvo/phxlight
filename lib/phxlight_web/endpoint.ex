@@ -10,14 +10,14 @@ defmodule PhxlightWeb.Endpoint do
     signing_salt: "0vAPl12W"
   ]
 
-  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
+  socket PhxlightWeb.get_path("/live"), Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: Application.fetch_env!(:phxlight, :root_path),
+    at: PhxlightWeb.get_root_path(),
     from: :phxlight,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
